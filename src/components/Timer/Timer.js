@@ -3,7 +3,6 @@ import './Timer.css';
 
 function Timer(props) {
 
-    let timeConsumed = 0;
 
     const getMinutes = (time) => {
         return Math.floor( time/ 60);

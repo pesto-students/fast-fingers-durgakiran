@@ -23,7 +23,7 @@ function Login(props) {
     const startGame = (userName, difficultLevel) => {
         setSession(userName, difficultLevel);
         props.onUserUpdate(userName);
-        addToStorage();
+        addToStorage(userName, difficultLevel);
 
     }
 

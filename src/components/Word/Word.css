@@ -10,4 +10,12 @@
     text-transform: uppercase;
 }
 
+.word__correct {
+    color: #54ba18;
+}
+
+.word__incorrect {
+    color: #445298;
+}
+
 
