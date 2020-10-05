@@ -6,6 +6,8 @@ import Action from "../Action/Action";
 
 function Game() {
     const [ isGameOver, setIsGameOver ] = useState(false);
+    let currentTime = 0;
+    const gameNumber = '1';
 
     const scores = [
         {
@@ -33,8 +35,15 @@ function Game() {
     }
 
     const gameOver =() => {
-        console.log("I am here");
+        localStorage.setItem(gameNumber, currentTime);
         setIsGameOver(true);
+    }
+
+    const updateCurrentTime = (time) => {
+        console.log("current success time", time);
+        if (time > currentTime ) {
+            currentTime = time;
+        }
     }
     
 
@@ -53,7 +62,7 @@ function Game() {
                             </div>
                             :
                             <div className="game__area">
-                                <Action onTimeExpired={ () => gameOver()}/>
+                                <Action onSuccess={(currentTime) => updateCurrentTime(currentTime) } onTimeExpired={ () => gameOver()}/>
                             </div>
 
             }

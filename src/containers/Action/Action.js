@@ -12,8 +12,8 @@ function Action(props) {
     const [ word, setWord ] = useState('');
     const [ charArray, setCharArray ] = useState([]);
     const [ difficultyLevel, setDifficultyLevel ] = useState(sessionStorage.getItem('difficulty'));
-    let currentTimeMinutes = 0;
-    let currentTimeSeconds = 0;
+    // const [ reset, setReset ] = useState(false);
+    const [ currentTime, setCurrentTime ] = useState(undefined);
 
 
     const play = () => {
@@ -25,19 +25,18 @@ function Action(props) {
         setCharArray(charArray);
     }
 
-    const setCurrentTime = (obj) => {
-        currentTimeMinutes = obj.minutes;
-        currentTimeSeconds = obj.seconds;
-    }
 
     const computeWords = (value) => {
         if( value === word ) {
-            props.onSuccess()
+            console.log(currentTime);
+            props.onSuccess(currentTime);
+            play();
         } else {
             const charArray = getWordSplits(word, value);
             setCharArray(charArray);
         }
     }
+
 
     const getWordSplits = (word, wordToCompare) => {
         return word.split('').map((char, i) => {
@@ -75,8 +74,8 @@ function Action(props) {
 
     return (
         <div className="action">
-            <Timer time={timer} postCurrentUserTime={(obj) => {setCurrentTime(obj)}} 
-            onTimeExpired={() => { timeExpired() }}/>
+            <Timer time={timer} postCurrentUserTime={(time) => {setCurrentTime(time)}} 
+            onTimeExpired={() => { timeExpired() }} key={timer}/>
             <Word>
                 {charArray}
             </Word>
@@ -84,6 +83,7 @@ function Action(props) {
                 type="text"
                 isTextCenter="true"
                 onInputChange={(value) => computeWords(value)}
+                key={word}
             />
         </div>
     )

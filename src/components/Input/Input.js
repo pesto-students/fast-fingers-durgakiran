@@ -13,7 +13,7 @@ function Input(props) {
             inputElement = <input type="text" placeholder={props.placeholder} 
                             onChange={(event) => handleInputChange(event.target.value)}
                             value={ props.cleanInput ? '' : props.value }
-                            className={['input__text', `${props.isTextCenter ? 'text-center' : ''}`].join(' ')}/>;
+                            className={['input__text', `${props.isTextCenter ? 'text-center' : ''}`].join(' ')} autoFocus/>;
             break;
         case 'select':
             inputElement = (
