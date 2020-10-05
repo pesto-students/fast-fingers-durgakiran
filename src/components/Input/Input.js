@@ -19,7 +19,7 @@ function Input(props) {
             inputElement = (
             <select type="select" className={classes.input__select} 
             onChange={(event) => handleInputChange(event.target.value)} placeholder={props.placeholder}>
-              {props.options.map((value, i) =>  <option value={value} key={i}>{value}</option>)}      
+              {props.options.map((value, i) =>  <option value={value.value} key={i}>{value.level}</option>)}      
             </select>
             );
             break;

@@ -5,15 +5,15 @@ meet the requirements mentioned in the MVP below.
 
 ## MVP Requirement
 
-1. Ask player to enter his/her name before starting the game.
+[x]. Ask player to enter his/her name before starting the game.
 
    - Do not ask player to enter his/her name again if he plays the game again in the same session.
 
-2. Start the game on `START GAME` button click.
+[x]. Start the game on `START GAME` button click.
 
-3. Show random word from dictionary and an input box on game screen.
+[x]. Show random word from dictionary and an input box on game screen.
 
-4. As soon as the typed word matches the word shown on screen, it should we considered submitted (pressing "ENTER" button shall not be required to submit a word). Empty the input box after a successful attempt.
+[x]. As soon as the typed word matches the word shown on screen, it should we considered submitted (pressing "ENTER" button shall not be required to submit a word). Empty the input box after a successful attempt.
 
 5. A timer shall be shown on the screen for every word and the maximum time that an user is allowed to type a word will depend on the difficulty factor. Refer to the formula provided below to calculate the maximum time allowed :
 

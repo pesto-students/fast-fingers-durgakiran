@@ -1,16 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Board from "../../components/Board/Board";
-import Word from "../../components/Word/Word";
 import "./Game.css";
-import Timer from "../../components/Timer/Timer";
-import Input from "../../components/Input/Input";
-import jsonData from "../../data/dictionary.json";
+import Over from "../../components/Over/Over";
+import Action from "../Action/Action";
 
 function Game() {
-    const [randomWord, setRandomWord] = useState("");
-    const [charArray, setCharArray] = useState([]);
-    const [ isSuccess, setIsSuccess ] = useState(false);
-    const [ cleanInput, setCleanInput ] = useState(false);
+    const [ isGameOver, setIsGameOver ] = useState(false);
 
     const scores = [
         {
@@ -30,80 +25,41 @@ function Game() {
         },
     ];
 
-    useEffect(() => {
-        const randomWord = getRandomWord();
-        setRandomWord(randomWord);
-        setCharArray(getWordSplitSpans(randomWord));
-    }, []);
+    
 
-    const computeWords = (value) => {
-        setCharArray(computeWordTypings(randomWord, value));
-        const tmpIsSuccess = compareTypedAndOriginal(randomWord, value);
-        setIsSuccess(tmpIsSuccess);
-        if(tmpIsSuccess) {
-            const newRandomWOrd = getRandomWord();
-            setRandomWord(newRandomWOrd);
-            setCharArray(getWordSplitSpans(newRandomWOrd));
-            setCleanInput(true);
-        } else {
-            setCleanInput(false);
-        }
-    };
+    const play = () => {
+        console.log("I am here too");
+        setIsGameOver(false);
+    }
+
+    const gameOver =() => {
+        console.log("I am here");
+        setIsGameOver(true);
+    }
+    
 
     return (
         <div className="game">
             <div className="game__scores">
                 <Board scores={scores} />
             </div>
-            <div className="game__area">
-                <Timer time="330" />
-                <Word>
-                    {charArray}
-                </Word>
-                <Input
-                    type="text"
-                    isTextCenter="true"
-                    cleanInput={cleanInput}
-                    onInputChange={(value) => computeWords(value)}
-                />
-            </div>
+            {
+                isGameOver ? <div className="game__area">
+                                <Over number="1" minutes="01" seconds="12"/>
+                                <div className="game-complete__button" onClick={() => play()}>
+                                    <img src="/reload.svg" alt="play again" />
+                                    PLAY AGAIN
+                                </div> 
+                            </div>
+                            :
+                            <div className="game__area">
+                                <Action onTimeExpired={ () => gameOver()}/>
+                            </div>
+
+            }
             <div className="game__occ-space"></div>
         </div>
     );
-}
-
-export function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
-
-export function getRandomWord() {
-    const randomInt = getRandomInt(jsonData.length);
-    const randomWord = jsonData[randomInt];
-    return randomWord;
-}
-
-export function getWordSplitSpans(word) {
-    return word.split('').map((value, index) => {
-        return <span key={index}>{value}</span>;;
-    })
-}
-
-export function computeWordTypings(originalWord, typedWord) {
-    return originalWord.split('').map((value, index) => {
-        const typedChar = typedWord[index];
-        if (!typedChar) {
-            return <span key={index}>{value}</span>;
-        } else if (value.toUpperCase() === typedChar.toUpperCase()) {
-            return <span className="word__correct" key={index}>{value}</span>;
-        } else {
-            return <span className="word__incorrect" key={index}>{value}</span>;
-        }
-    });
-}
-
-export function compareTypedAndOriginal(originalWord, typedWord) {
-    console.log(originalWord.toUpperCase(), typedWord.toUpperCase());
-    return (originalWord.toUpperCase() === typedWord.toUpperCase());
 }
 
 export default Game;

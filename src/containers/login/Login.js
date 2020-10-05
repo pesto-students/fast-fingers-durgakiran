@@ -5,12 +5,16 @@ import Input from '../../components/Input/Input';
 import { useStateValue } from '../../StateProvider';
 
 function Login(props) {
-    const options = ['Normal','Medium', 'Difficult'];
+    const options = [
+        {level: 'Normal', value: 1},
+        {level: 'Medium', value: 1}, 
+        {level: 'Difficult', value: 1}
+    ];
 
     const [ {}, dispatch ] = useStateValue();
 
     const [ userName, setUserName ] = useState('');
-    const [ difficultLevel, setDifficultyLevel ] = useState('NORMAL');
+    const [ difficultLevel, setDifficultyLevel ] = useState(1);
 
     const addToStorage = (userName, difficultLevel) => {
         dispatch({
@@ -55,7 +59,7 @@ function Login(props) {
                 </div>
 
                 <div className="login__name-select">
-                    <Input type='select' options={options} onInputChange={(value) => setDifficultyLevel(value)} placeholder="Difficulty Level"/>
+                    <Input type='select' options={options} onInputChange={(value) => setDifficultyLevel(value.value)} placeholder="Difficulty Level"/>
                 </div>
 
                 <div className="login__start-button" onClick={() => startGame(userName, difficultLevel)}>

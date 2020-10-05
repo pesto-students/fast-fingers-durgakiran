@@ -1,7 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, {  useEffect } from 'react';
 import './Timer.css';
 
 function Timer(props) {
+
+    // read initial amount of minutes from props
+    let { time } = props;
+
+    let tmpTimeConsumed = 0;
+    let tmpMinutes = 0;
+    let tmpSeconds = 0;
 
 
     const getMinutes = (time) => {
@@ -18,33 +25,37 @@ function Timer(props) {
         return seconds;
     }
 
-    // read initial amount of minutes from props
-    let { time = 0 } = props;
-    const [ timer, setTimer ]  = useState(time);
-    const [ minutes, setMinutes ] = useState(getMinutes(time));
-    const [ seconds, setSeconds ] = useState(getSeconds(time));
-
     const setCircleDashArray = () => {
-        const circleDashArray = `${( (timer / time) * 283 ).toFixed(0)} 283`;
+        const circleDashArray = `${( ((time - tmpTimeConsumed) / time) * 283 ).toFixed(0)} 283`;
         document.getElementById('base-timer-path-remaining').setAttribute("stroke-dasharray", circleDashArray);
+        document.getElementById('base-timer-label').innerHTML = `${tmpMinutes}:${tmpSeconds}`;
     };
 
 
+    const timerFunction = (time) => {
+        console.log(time);
+        if(time) {
+            let timeInterval = setInterval(() => {
+                if( tmpTimeConsumed < time ) {
+                    tmpTimeConsumed += 1;
+                    tmpMinutes = getMinutes(time - tmpTimeConsumed);
+                    tmpSeconds = getSeconds(time - tmpTimeConsumed);
+                    props.postCurrentUserTime({tmpMinutes, tmpSeconds});
+                    setCircleDashArray();
+
+                } else {
+                    props.onTimeExpired();
+                    clearInterval(timeInterval);
+                    return null;
+                }
+            }, 1000);
+        }
+    }
+
+
     useEffect(() => {
-        let timerFunction =  setInterval(() => {
-                            if( timer > 0 ) {
-                                setTimer(timer - 1)
-                                setMinutes(getMinutes(timer));
-                                setSeconds(getSeconds(timer));
-                                setCircleDashArray();
-                            } else {
-                                clearInterval(timerFunction);
-                            }
-                        }, 1000);
-                        return () => {
-                            clearInterval(timerFunction);
-                        }
-    });
+        timerFunction(props.time);
+    }, [props.time]);
 
 
 
@@ -67,7 +78,7 @@ function Timer(props) {
                 </g>
             </svg>
             <span id="base-timer-label" className="base-timer__label">
-                {minutes}:{seconds}
+                {tmpMinutes}:{tmpSeconds}
             </span>
         </div>
     )
