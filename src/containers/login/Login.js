@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-pattern */
 import React, { useState } from 'react'
 import keyboard from './keyboard.svg';
 import './Login.css';

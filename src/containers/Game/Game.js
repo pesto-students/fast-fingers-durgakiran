@@ -18,6 +18,7 @@ function Game(props) {
         }
         setIsGameOver(props.stopGame);
         createBoardJSON();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.stopGame]);
 
     const createBoardJSON = () => {

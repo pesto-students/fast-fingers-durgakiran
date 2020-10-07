@@ -18,6 +18,7 @@ function Header(props) {
     useEffect(() => {
         updateDifficultyString();
         console.log(props);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.difficulty])
 
     return (

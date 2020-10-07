@@ -3,7 +3,6 @@ import Timer from '../../components/Timer/Timer';
 import Word from '../../components/Word/Word';
 import Input from '../../components/Input/Input';
 import jsonData from "../../data/dictionary.json";
-import difficulty from '../../data/difficulty.json';
 import './Action.css';
 import { useStateValue } from '../../StateProvider';
 
@@ -15,6 +14,7 @@ function Action(props) {
     const [ difficultyLevel, setDifficultyLevel ] = useState(sessionStorage.getItem('difficulty'));
     // const [ reset, setReset ] = useState(false);
     const [ currentTime, setCurrentTime ] = useState(0);
+    // eslint-disable-next-line no-empty-pattern
     const [ {}, dispatch ] = useStateValue();
     //const [ totalTime, setTotalTime ] = useState(0);
     let totalTime = 0;
@@ -95,6 +95,7 @@ function Action(props) {
 
     useEffect(() => {
         play();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
