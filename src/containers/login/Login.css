@@ -62,7 +62,7 @@
 
 .login__start-button {
     margin-top: 5vw;
-    font-size: clamp( 30px ,2.5vw, 2.5vw);
+    font-size: clamp( 30px, 2.5vw, 2.5vw);
     line-height: 1.21;
     color: var( --color-laser-corps-gradient );
     display: flex;

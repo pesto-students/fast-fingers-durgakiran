@@ -4,3 +4,9 @@
   height: 100vh;
   background-image: linear-gradient(to bottom, #000000, #063c47f5), url('/background.svg');
 }
+
+@media (max-width: 960px) {
+  .App {
+    overflow: scroll;
+  }
+}

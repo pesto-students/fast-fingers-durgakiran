@@ -5,6 +5,7 @@
     padding: max(15px, 1.6vw);
     box-sizing: border-box;
     color: var(--color-laser-corps-gradient);
+    overflow: auto;
 }
 
 .board__title {

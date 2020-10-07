@@ -14,13 +14,11 @@ function Action(props) {
     const [ charArray, setCharArray ] = useState([]);
     const [ difficultyLevel, setDifficultyLevel ] = useState(sessionStorage.getItem('difficulty'));
     // const [ reset, setReset ] = useState(false);
-    const [ currentTime, setCurrentTime ] = useState(undefined);
+    const [ currentTime, setCurrentTime ] = useState(0);
     const [ {}, dispatch ] = useStateValue();
+    //const [ totalTime, setTotalTime ] = useState(0);
+    let totalTime = 0;
 
-
-    const updateDifficultAtSession = () => {
-
-    }
 
     const play = () => {
         let newWord = getDifferentWord(jsonData.length);
@@ -36,13 +34,19 @@ function Action(props) {
     const computeWords = (value) => {
         if( value === word ) {
             console.log(currentTime);
-            props.onSuccess(currentTime);
+            updateScoreBoard();
+            props.onSuccess(totalTime);
             computeDifficulty();
             play();
         } else {
             const charArray = getWordSplits(word, value);
             setCharArray(charArray);
         }
+    }
+
+    const updateScoreBoard = () => {
+        const tmpTime = totalTime + currentTime;
+        totalTime = tmpTime;
     }
 
     const computeDifficulty = () => {

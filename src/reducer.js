@@ -1,6 +1,6 @@
 export const initialState = {
     userName: sessionStorage.getItem('userName') || '',
-    difficulty: sessionStorage.getItem('difficulty') || ''
+    difficulty: sessionStorage.getItem('difficulty') || '',
 }
 
 export function reducer(state, action) {

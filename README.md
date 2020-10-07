@@ -23,7 +23,7 @@ Round the timer value to nearest integer bigger than the value.
 
 Initially the difficulty factor would be 1 and it will keep increasing as the player progresses in the game and the timer value is guaranteed to be greater than or equal to 2 seconds that means a player must get at least 2 seconds to type a word. So whenever the calculated value is found to be less than 2 seconds, it should be rounded off to 2 seconds always.
 
-5. There are three levels in game: EASY, MEDIUM and HARD
+[x] There are three levels in game: EASY, MEDIUM and HARD
 
 Difficulty factor for easy level: 1
 
@@ -33,7 +33,7 @@ Difficulty factor for hard level: 2
 
 [x] Increase difficulty factor by 0.01 after every successful word attempt.
 
-7. Change the game level if difficulty factor crosses particular levels difficulty factor.
+[x] Change the game level if difficulty factor crosses particular levels difficulty factor.
 
 8. Player should be able to stop the game by clicking on `STOP GAME` button
 
