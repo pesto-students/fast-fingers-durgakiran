@@ -17,6 +17,7 @@ function Header(props) {
 
     useEffect(() => {
         updateDifficultyString();
+        console.log(props);
     }, [props.difficulty])
 
     return (

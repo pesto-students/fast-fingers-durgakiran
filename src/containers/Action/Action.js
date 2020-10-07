@@ -5,6 +5,7 @@ import Input from '../../components/Input/Input';
 import jsonData from "../../data/dictionary.json";
 import difficulty from '../../data/difficulty.json';
 import './Action.css';
+import { useStateValue } from '../../StateProvider';
 
 function Action(props) {
 
@@ -14,7 +15,12 @@ function Action(props) {
     const [ difficultyLevel, setDifficultyLevel ] = useState(sessionStorage.getItem('difficulty'));
     // const [ reset, setReset ] = useState(false);
     const [ currentTime, setCurrentTime ] = useState(undefined);
+    const [ {}, dispatch ] = useStateValue();
 
+
+    const updateDifficultAtSession = () => {
+
+    }
 
     const play = () => {
         let newWord = getDifferentWord(jsonData.length);
@@ -43,6 +49,10 @@ function Action(props) {
         const difficulty = Number(difficultyLevel) + 0.01;
         sessionStorage.setItem('difficulty', difficulty);
         setDifficultyLevel(difficulty);
+        dispatch({
+            type: "ADD_SCORE_LEVEL",
+            difficulty: difficultyLevel
+        });
     }
 
 

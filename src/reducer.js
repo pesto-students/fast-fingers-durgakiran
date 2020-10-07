@@ -12,8 +12,12 @@ export function reducer(state, action) {
                 userName: action.userName,
                 difficulty: action.difficulty
             };
-        case 'UPDATE_SCORE_LEVEL':
-            return state;
+        case 'ADD_SCORE_LEVEL':
+            sessionStorage.setItem('difficulty', action.difficulty);
+            return {
+                ...state,
+                difficulty: action.difficulty
+            }
     
         default:
             return  state;
