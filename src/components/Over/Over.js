@@ -51,10 +51,6 @@ function Over(props) {
                             New High Score
                         </div>
             }
-            {/* <div className="game-complete__button" onClick={props.onPlayAgain()}>
-                <img src="/reload.svg" alt="play again" />
-                PLAY AGAIN
-            </div> */}
             
         </div>
     )
