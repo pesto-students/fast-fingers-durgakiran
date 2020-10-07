@@ -6,7 +6,7 @@ function Board(props) {
         <div className="board">
             <div className="board__title">score board</div>
             {
-                    props.scores && props.scores.map((value, i) =>  { 
+                    props.scores ? props.scores.map((value, i) =>  { 
                                         return (
                                             value.best ? <div key={i} className="score">
                                                             <div className="slcore board__best"> PERSONAL BEST </div> 
@@ -15,6 +15,8 @@ function Board(props) {
                                                         <div key={i} className="score board__scores">Game {value.number} : {value.score}</div>
                                         )
                                     })
+                                    :
+                                    null
             }
         </div>
     )

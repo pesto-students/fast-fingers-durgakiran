@@ -46,10 +46,11 @@ function Over(props) {
                 <span>{minutes}: {seconds}</span>
             </div>
             {
-                localStorage.getItem(localStorage.getItem('currentGameNumber') || '1') >= bestScore &&
+                localStorage.getItem(localStorage.getItem('currentGameNumber') || '1') >= bestScore ?
                         <div className="game-complete__message">
                             New High Score
                         </div>
+                        : null
             }
             
         </div>
