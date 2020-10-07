@@ -17,11 +17,12 @@ function Action(props) {
 
 
     const play = () => {
-        const word = getRandomWord(jsonData.length);
-        setWord(word);
-        const timer = calculateTimer(word, difficultyLevel)
+        let newWord = getDifferentWord(jsonData.length);
+        
+        setWord(newWord);
+        const timer = calculateTimer(newWord, difficultyLevel)
         setTimer(timer);
-        const charArray = getWordSplits(word, '');
+        const charArray = getWordSplits(newWord, '');
         setCharArray(charArray);
     }
 
@@ -30,11 +31,18 @@ function Action(props) {
         if( value === word ) {
             console.log(currentTime);
             props.onSuccess(currentTime);
+            computeDifficulty();
             play();
         } else {
             const charArray = getWordSplits(word, value);
             setCharArray(charArray);
         }
+    }
+
+    const computeDifficulty = () => {
+        const difficulty = Number(difficultyLevel) + 0.01;
+        sessionStorage.setItem('difficulty', difficulty);
+        setDifficultyLevel(difficulty);
     }
 
 
@@ -57,8 +65,12 @@ function Action(props) {
         return word;
     }
 
+    const getDifferentWord = (length) => {
+        let newWord = getRandomWord(length);
+        return newWord
+    }
+
     const calculateTimer = (word, difficulty) => {
-        console.log('timer called');
         const timer = Math.ceil(word.length / difficulty);
         return timer > 2 ? timer : 2;
     }
@@ -75,7 +87,7 @@ function Action(props) {
     return (
         <div className="action">
             <Timer time={timer} postCurrentUserTime={(time) => {setCurrentTime(time)}} 
-            onTimeExpired={() => { timeExpired() }} key={timer}/>
+            onTimeExpired={() => { timeExpired() }} key={difficultyLevel}/>
             <Word>
                 {charArray}
             </Word>

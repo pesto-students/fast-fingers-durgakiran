@@ -31,7 +31,7 @@ Difficulty factor for medium level: 1.5
 
 Difficulty factor for hard level: 2
 
-6. Increase difficulty factor by 0.01 after every successful word attempt.
+[x] Increase difficulty factor by 0.01 after every successful word attempt.
 
 7. Change the game level if difficulty factor crosses particular levels difficulty factor.
 

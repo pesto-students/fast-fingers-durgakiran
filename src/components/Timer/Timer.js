@@ -4,6 +4,7 @@ import './Timer.css';
 export default class Timer extends Component {
 
     state = {
+        time: undefined,
         timer: undefined,
         minutes: undefined,
         seconds: undefined
@@ -60,8 +61,19 @@ export default class Timer extends Component {
         const { time } = this.props;
         const minutes = this.getMinutes(time);
         const seconds = this.getSeconds(time);
-        this.setState({timer: time, minutes, seconds});
+        this.setState({time, timer: time, minutes, seconds});
         this.start();
+    }
+
+    componentDidUpdate() {
+        if( this.state.time !== this.props.time ) {
+            this.clearSetInterval();
+            const minutes = this.getMinutes(this.props.time);
+            const seconds = this.getSeconds(this.props.time);
+            this.setState({time: this.props.time, timer: this.props.time, minutes, seconds});
+            this.start();
+            this.start();
+        } 
     }
     
 

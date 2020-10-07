@@ -5,6 +5,7 @@ function Input(props) {
     let inputElement = null;
 
     const handleInputChange = (value) => {
+        console.log(value);
         props.onInputChange(value);
     };
 

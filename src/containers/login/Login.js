@@ -7,8 +7,8 @@ import { useStateValue } from '../../StateProvider';
 function Login(props) {
     const options = [
         {level: 'Normal', value: 1},
-        {level: 'Medium', value: 1}, 
-        {level: 'Difficult', value: 1}
+        {level: 'Medium', value: 1.5}, 
+        {level: 'Difficult', value: 2}
     ];
 
     const [ {}, dispatch ] = useStateValue();
@@ -59,7 +59,7 @@ function Login(props) {
                 </div>
 
                 <div className="login__name-select">
-                    <Input type='select' options={options} onInputChange={(value) => setDifficultyLevel(value.value)} placeholder="Difficulty Level"/>
+                    <Input type='select' options={options} onInputChange={(value) => setDifficultyLevel(value)} placeholder="Difficulty Level"/>
                 </div>
 
                 <div className="login__start-button" onClick={() => startGame(userName, difficultLevel)}>
