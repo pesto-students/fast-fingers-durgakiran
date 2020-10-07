@@ -1,0 +1,27 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var( --color-laser-corps-gradient );
+    font-size: clamp(24px, 2vw, 2vw);
+    margin-top: 4vh;
+}
+
+.footer img {
+    height: 2vw;
+    min-height: 24px;
+}
+
+.footer * {
+    cursor: pointer;
+}
+
+.footer-button__stop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.footer-button__stop img {
+    height: 2.8vw;
+}

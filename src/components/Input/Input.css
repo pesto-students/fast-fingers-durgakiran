@@ -1,0 +1,51 @@
+input[type="text"] {
+    background-color: var(--color-beam-catcher-regular);
+    border-radius: 8px;
+    width: 32.39vw;
+    border: none;
+    padding: max(10px, 0.8vw);
+    font-size: clamp(18px, 1.82vw, 1.82vw);
+    box-sizing: border-box;
+    text-transform: uppercase;
+    min-width: 300px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+select {
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 8px;
+    width: 32.39vw;
+    min-width: 300px;
+    border: none;
+    padding: max(10px, 0.8vw);
+    font-size: 1.82vw;
+    font-size: clamp(18px, 1.82vw, 1.82vw);
+    border: solid 1px #ffffff;
+    box-sizing: border-box;
+    color: var(--color-beam-catcher-regular);
+    text-transform: uppercase;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    background: url("/md-arrow-dropdown.svg") no-repeat right;
+    background-size: 3vw;
+}
+
+option {
+    background-color: var(--color-beam-catcher-regular);
+    color: var(--color-beam-catcher);
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 0.83vw;
+    font-size: clamp(16px, 1.3vw, 1.3vw);
+    line-height: 1.2;
+}
+
+select option:checked,
+select option:hover {
+    box-shadow: 0 0 10px 100px var(--color-highlight) inset !important;
+}
+
