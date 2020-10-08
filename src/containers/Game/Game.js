@@ -73,9 +73,14 @@ function Game(props) {
 
     return (
         <div className="game">
-            <div className="game__scores">
-                <Board scores={scores} key={scores}/>
-            </div>
+            {
+            !isGameOver ? 
+                <div className="game__scores">
+                    <Board scores={scores} key={scores}/>
+                </div>
+                : null
+            }
+
             {
                 isGameOver ? <div className="game__area">
                                 <Over currentTimeInPlay={currentTimeInPlay} bestIndex={bestIndex}/>
@@ -90,7 +95,11 @@ function Game(props) {
                             </div>
 
             }
-            <div className="game__occ-space"></div>
+            {
+                !isGameOver ? <div className="game__occ-space"></div>
+                            : null
+            }
+            
         </div>
     );
 }
