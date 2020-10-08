@@ -5,6 +5,9 @@
     color: var( --color-laser-corps-gradient );
     font-size: clamp(24px, 2vw, 2vw);
     margin-top: 4vh;
+    position: absolute;
+    bottom: 20px;
+    width: calc( 100% - max(20px, 6.24vw));
 }
 
 .footer img {
@@ -24,4 +27,8 @@
 
 .footer-button__stop img {
     height: 2.8vw;
+}
+
+.occ-space {
+    flex-grow: 1;
 }

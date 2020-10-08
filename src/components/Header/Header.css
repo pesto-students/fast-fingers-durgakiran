@@ -5,12 +5,17 @@
     color: var(--color-laser-corps-gradient);
     font-size: clamp( 26px, 2vw, 2vw );
     justify-content: space-between;
+    font-family: "Breamcatcher";
 }
 
 .header__user-container {
     display: flex;
     flex-direction: column;
     text-transform: uppercase;
+}
+
+.header__name {
+    font-family: "Laser Corps Gradient";
 }
 
 .header__user {

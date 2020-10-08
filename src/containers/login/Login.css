@@ -24,6 +24,7 @@
 
 .login__brand-title {
     font-size: clamp( 50px, 4.2vw, 4.2vw );
+    font-family: "Laser Corps Gradient";
     margin: 0;
     font-weight: normal;
     font-stretch: normal;
@@ -34,6 +35,7 @@
 
 .login__brand-name-subtitle {
     font-size: clamp( 16px, 1.35vw, 1.35vw );
+    font-family: "Gotham";
     display: flex;
     align-items: center;
     width: 32.2vw;
@@ -77,5 +79,8 @@
 
 .login__start-button p {
     margin: 0;
+    text-transform: uppercase;
+    font-family: "Gotham";
 }
+
 

@@ -15,6 +15,7 @@ function Footer(props) {
                                     STOP GAME
                                   </div>
             }
+            <div className="occ-space"></div>
 
             <div className="footer-button__home">
                 <img src='/home.svg'  alt="stop game"/>

@@ -8,10 +8,33 @@ input[type="text"] {
     box-sizing: border-box;
     text-transform: uppercase;
     min-width: 300px;
+    font-family: "Breamcatcher";
 }
 
 .text-center {
     text-align: center;
+}
+
+.custom-select-container {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 8px;
+    width: 32.39vw;
+    min-width: 300px;
+    border: none;
+    padding: max(10px, 0.8vw);
+    font-size: 1.82vw;
+    font-size: clamp(18px, 1.82vw, 1.82vw);
+    border: solid 1px #ffffff;
+    box-sizing: border-box;
+    color: var(--color-beam-catcher-regular);
+    text-transform: uppercase;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    background: url("/md-arrow-dropdown.svg") no-repeat right;
+    background-size: 3vw;
+    font-family: "Breamcatcher";
 }
 
 select {
@@ -32,6 +55,7 @@ select {
     appearance:none;
     background: url("/md-arrow-dropdown.svg") no-repeat right;
     background-size: 3vw;
+    font-family: "Breamcatcher";
 }
 
 option {
