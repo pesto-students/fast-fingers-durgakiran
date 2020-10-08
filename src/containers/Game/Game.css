@@ -20,6 +20,12 @@
     border: 2px solid var(--color-laser-corps-gradient);
 }
 
+@media (max-width: 960px) {
+    .game__scores {
+        margin: auto;
+        margin-top: 10px;
+    }
+}
 
 .game__occ-space {
     width: 15vw;
