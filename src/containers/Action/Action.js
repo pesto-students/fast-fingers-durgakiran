@@ -33,7 +33,6 @@ function Action(props) {
 
     const computeWords = (value) => {
         if( value === word ) {
-            console.log(currentTime);
             updateScoreBoard();
             props.onSuccess(totalTime);
             computeDifficulty();

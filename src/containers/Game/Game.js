@@ -43,19 +43,16 @@ function Game(props) {
         if(tmpScores[tmpBestIndex]) {
             tmpScores[tmpBestIndex].best = true;
         }
-        console.log(currentBestScore);
         setScores(tmpScores);
     }
 
 
     const play = () => {
-        console.log("I am here too");
         props.playAgain();
         setIsGameOver(false);
     }
 
     const updateScores = () => {
-        console.log(currentTimeInPlay);
         const currentGameNumber = sessionStorage.getItem('currentGameNumber');
         gameNumber = String(Number(currentGameNumber) + 1);
         sessionStorage.setItem(gameNumber, currentTimeInPlay);
@@ -70,7 +67,6 @@ function Game(props) {
     }
 
     const updateCurrentTime = (time) => {
-        console.log("current success time", time);
         setCurrentTimeInPlay(time + currentTimeInPlay);
     }
     
