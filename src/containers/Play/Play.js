@@ -5,11 +5,25 @@ import Game from '../Game/Game';
 import './Play.css';
 import Footer from '../../components/Footer/Footer';
 
-function Play() {
+function Play(props) {
 
     const [ stopGame, setStopGame ] = useState(false);
 
-    const [{userName, difficulty}] = useStateValue();
+    const [{userName, difficulty}, dispatch] = useStateValue();
+
+    const addToStorage = (userName, difficultLevel) => {
+        dispatch({
+            type: "ADD_USER_NAME",
+            userName: userName,
+            difficulty: difficultLevel
+        });
+    }
+
+    const setSession = () => {
+        sessionStorage.clear();
+        addToStorage(undefined, undefined);
+        props.resetSession();
+    }
 
     return (
         <div className="play">
@@ -17,7 +31,7 @@ function Play() {
 
             <Game playAgain={() => setStopGame(false)} onStopGame={() => setStopGame(true)} stopGame={stopGame} />
 
-            <Footer onStopGame={() => setStopGame(true)} isGameOver={stopGame}/>
+            <Footer onStopGame={() => setStopGame(true)} isGameOver={stopGame} onClearSession={() => setSession()}/>
 
             
 

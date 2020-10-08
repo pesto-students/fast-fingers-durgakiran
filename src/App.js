@@ -12,7 +12,8 @@ function App() {
   }
   
 
-  const componentToRender = Boolean(userName) ? <Play /> : <Login onUserUpdate={(userName) => updateUserName(userName)}/>;
+  const componentToRender = Boolean(userName) ? <Play resetSession={() => setUserName(undefined)}/> 
+                            : <Login onUserUpdate={(userName) => updateUserName(userName)}/>;
 
   return (
     <section className="App">
