@@ -37,7 +37,9 @@ function Game(props) {
                 score: localStorage.getItem(String(i))
             });
         }
-        tmpScores[bestIndex].best = true;
+        if(tmpScores[bestIndex]) {
+            tmpScores[bestIndex].best = true;
+        }
         setScores(tmpScores);
     }
 
