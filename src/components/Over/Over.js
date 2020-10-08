@@ -24,14 +24,14 @@ function Over(props) {
     }
 
     useEffect(() =>{
-        setNumber(localStorage.getItem('currentGameNumber') || '1');
-        const time = localStorage.getItem(localStorage.getItem('currentGameNumber') || '1');
+        setNumber(sessionStorage.getItem('currentGameNumber') || '1');
+        const time = sessionStorage.getItem(sessionStorage.getItem('currentGameNumber') || '1');
         const tmpMinutes = calculateMinutes(time);
         const tmpSeconds = getSeconds(time);
         setMinutes(tmpMinutes);
         setSeconds(tmpSeconds);
-        if(props.bestIndex) {
-            setBestScore(localStorage.getItem(props.bestIndex + 1 ))
+        if(sessionStorage.getItem('bestIndex')) {
+            setBestScore(sessionStorage.getItem(Number(sessionStorage.getItem('bestIndex')) + 1 ))
         }
     }, [props.currentTimeInPlay, props.bestIndex])
 
@@ -46,7 +46,7 @@ function Over(props) {
                 <span>{minutes}: {seconds}</span>
             </div>
             {
-                localStorage.getItem(localStorage.getItem('currentGameNumber') || '1') >= bestScore ?
+                sessionStorage.getItem(sessionStorage.getItem('currentGameNumber') || '1') >= bestScore ?
                         <div className="game-complete__message">
                             New High Score
                         </div>

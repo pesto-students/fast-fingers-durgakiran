@@ -23,39 +23,40 @@ function Game(props) {
 
     const createBoardJSON = () => {
         let currentBestScore = 0;
-        gameNumber = localStorage.getItem('currentGameNumber');
+        let tmpBestIndex = 0;
+        gameNumber = Number(sessionStorage.getItem('currentGameNumber'));
         const tmpScores = [];
         for(let i = 1; i <= gameNumber; i+= 1 ) {
-            const currentScore = localStorage.getItem(String(i));
-            if(currentScore >= currentBestScore ) {
-                currentBestScore = currentScore;
+            const currentScore = sessionStorage.getItem(String(i));
+            if(Number(currentScore) >= Number(currentBestScore) ) {
+                currentBestScore = Number(currentScore);
+                tmpBestIndex = i - 1;
+                sessionStorage.setItem('bestIndex', tmpBestIndex);
                 setBestIndex((i-1));
             }
             tmpScores.push({
                 best: false,
                 number: Number(i),
-                score: localStorage.getItem(String(i))
+                score: sessionStorage.getItem(String(i))
             });
         }
-        if(tmpScores[bestIndex]) {
-            tmpScores[bestIndex].best = true;
+        if(tmpScores[tmpBestIndex]) {
+            tmpScores[tmpBestIndex].best = true;
         }
         setScores(tmpScores);
     }
 
 
     const play = () => {
-        console.log("I am here too");
         props.playAgain();
         setIsGameOver(false);
     }
 
     const updateScores = () => {
-        console.log(currentTimeInPlay);
-        const currentGameNumber = localStorage.getItem('currentGameNumber');
+        const currentGameNumber = sessionStorage.getItem('currentGameNumber');
         gameNumber = String(Number(currentGameNumber) + 1);
-        localStorage.setItem(gameNumber, currentTimeInPlay);
-        localStorage.setItem('currentGameNumber', gameNumber);
+        sessionStorage.setItem(gameNumber, currentTimeInPlay);
+        sessionStorage.setItem('currentGameNumber', gameNumber);
         createBoardJSON();
     }
 
@@ -66,17 +67,14 @@ function Game(props) {
     }
 
     const updateCurrentTime = (time) => {
-        console.log("current success time", time);
-        if (time > currentTimeInPlay ) {
-            setCurrentTimeInPlay(time);
-        }
+        setCurrentTimeInPlay(time + currentTimeInPlay);
     }
     
 
     return (
         <div className="game">
             <div className="game__scores">
-                <Board scores={scores} />
+                <Board scores={scores} key={scores}/>
             </div>
             {
                 isGameOver ? <div className="game__area">
