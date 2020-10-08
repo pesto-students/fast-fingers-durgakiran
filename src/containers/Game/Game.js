@@ -67,9 +67,7 @@ function Game(props) {
 
     const updateCurrentTime = (time) => {
         console.log("current success time", time);
-        if (time > currentTimeInPlay ) {
-            setCurrentTimeInPlay(time);
-        }
+        setCurrentTimeInPlay(time + currentTimeInPlay);
     }
     
 
